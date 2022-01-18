@@ -4,7 +4,7 @@ pipeline {
     }
        environment {
        //once you sign up for Docker hub, use that user_id here
-       registry = "donmanula/starlink"
+       registry = "sandusmart/coinbase"
        //- update your credentials ID after creating credentials for connecting to Docker Hub
        registryCredential = 'dockerhub'
        dockerImage = ''
@@ -13,14 +13,14 @@ pipeline {
 
         stage ('checkout') {
             steps {
-            checkout([$class: 'GitSCM', branches: [[name: '*/dev']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/manula96/Starlink']]])
+            checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/SandunAmarathunga/Coinbase']]])
             }
         }
 
         stage ('Run Test Suite') {
             steps {
                 script {
-                bat 'mvn clean install -DstarlinkTestSuite'
+                bat 'mvn clean install -DTestSuite'
                 }
             }
         }
@@ -48,7 +48,7 @@ pipeline {
             steps {
                 script {
                     kubernetesDeploy(
-                        configs: 'kube/Starlink.yaml',
+                        configs: 'kube/Coinbase.yaml',
                         kubeconfigId: 'mykubeconfig',
                         enableConfigSubstitution: true
                         )
