@@ -1,0 +1,35 @@
+#... Deployment YAML definition
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coinbase
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coinbase
+  template:
+    metadata:
+      labels:
+        app: coinbase
+    spec:
+      containers:
+        - name: app
+          image: sandusmart/coinbase:1.0.0
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
+          command: ["/bin/sh", "-ec", "sleep 1000"]
+---
+# ... Service YAML definition
+apiVersion: v1
+kind: Service
+metadata:
+  name: coinbase
+spec:
+  selector:
+    app: coinbase
+  ports:
+    - port: 8080
+      targetPort: 8080
+  type: LoadBalancer
