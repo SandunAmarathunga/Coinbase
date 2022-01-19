@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: sandusmart/coinbase:2.0.0
+          image: sandusmart/coinbase:1.0.0
           ports:
             - containerPort: 8080
           imagePullPolicy: Always
