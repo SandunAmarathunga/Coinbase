@@ -46,9 +46,7 @@ pipeline {
             steps {
                 script {
                     withKubeConfig([
-                        configs: 'kube/coinbase.yaml',
-                        kubeconfigId: 'mykubeconfig',
-                        enableConfigSubstitution: true
+                        credentialsId: 'kcoinbasekube'
                         ])
                     sh 'kubectl apply -f kube'
 
