@@ -50,8 +50,6 @@ pipeline {
                         kubeconfigId: 'kubeConfigSandun',
                         enableConfigSubstitution: true
                         )
-                    sh 'kubectl apply -f kube'
-
                 }
             }
         }
