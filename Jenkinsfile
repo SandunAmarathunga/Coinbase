@@ -18,7 +18,7 @@ pipeline {
         stage ('Run Test Suite') {
             steps {
                 script {
-                bat 'mvn clean install -DTestSuite'
+                sh 'mvn clean install -DTestSuite'
                 }
             }
         }
@@ -50,7 +50,7 @@ pipeline {
                         kubeconfigId: 'mykubeconfig',
                         enableConfigSubstitution: true
                         )
-                    bat 'kubectl apply -f kube'
+                    sh 'kubectl apply -f kube'
 
                 }
             }
