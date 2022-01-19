@@ -43,13 +43,9 @@ pipeline {
         }
 
         stage ('K8S Deploy') {
-            steps {
-                    withKubeConfig([
-                        credentialsId: 'coinbasekube'
-                        ])
-                    sh 'kubectl apply -f kube'
+            withKubeConfig([credentialsId: 'coinbasekube']) {
+                sh 'kubectl apply -f kube'
             }
         }
-
     }
 }
