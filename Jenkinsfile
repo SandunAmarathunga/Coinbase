@@ -42,25 +42,19 @@ pipeline {
           }
         }
 
-        stage('Apply Kubernetes files') {
-            withKubeConfig([configs: 'kube/coinbase.yaml', kubeconfigId: 'mykubeconfig', nableConfigSubstitution: true]) {
-              sh 'kubectl apply -f kube'
+        stage ('K8S Deploy') {
+            steps {
+                script {
+                    withKubeConfig(
+                        configs: 'kube/coinbase.yaml',
+                        kubeconfigId: 'mykubeconfig',
+                        enableConfigSubstitution: true
+                        )
+                    sh 'kubectl apply -f kube'
+
+                }
             }
         }
-
-//         stage ('K8S Deploy') {
-//             steps {
-//                 script {
-//                     kubernetesDeploy(
-//                         configs: 'kube/coinbase.yaml',
-//                         kubeconfigId: 'mykubeconfig',
-//                         enableConfigSubstitution: true
-//                         )
-//                     sh 'kubectl apply -f kube'
-//
-//                 }
-//             }
-//         }
 
     }
 }
