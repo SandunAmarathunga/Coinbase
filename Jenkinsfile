@@ -1,8 +1,6 @@
 pipeline {
-    agent {
-        label 'myslave'
-    }
-       environment {
+    agent any
+    environment {
        //once you sign up for Docker hub, use that user_id here
        registry = "sandusmart/coinbase"
        //- update your credentials ID after creating credentials for connecting to Docker Hub
