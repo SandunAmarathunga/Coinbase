@@ -44,11 +44,6 @@ pipeline {
 
         stage ('K8S Deploy') {
             steps {
-                    withKubeConfig([
-                        configs: 'kube/coinbase.yaml',
-                        kubeconfigId: 'mykubeconfig',
-                        enableConfigSubstitution: true
-                        ])
                     sh 'kubectl apply -f kube'
             }
         }
