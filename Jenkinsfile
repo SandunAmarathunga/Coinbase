@@ -44,6 +44,7 @@ pipeline {
 
         stage ('K8S Deploy') {
             steps {
+                    sh 'cd /home/sandun/Documents/RGU/Coinbase/'
                     sh 'kubectl apply -f kube'
             }
         }
