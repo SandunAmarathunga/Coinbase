@@ -56,4 +56,9 @@ public class CoinbaseController {
         coinbaseService.cancelTransaction(transaction);
     }
 
+    @RequestMapping(method = RequestMethod.DELETE, value="/cancel/{id}")
+    public void cancelTransaction(@PathVariable Long id){
+        coinbaseService.cancelTransaction(id);
+    }
+
 }

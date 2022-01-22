@@ -49,9 +49,9 @@ public class CoinbaseService {
         transactionRepository.delete(transaction);
     }
 
-//    public void cancelTransaction(Long id) {
-//        transactionRepository.deleteById(id);
-//    }
+    public void cancelTransaction(Long id) {
+        transactionRepository.deleteById(id);
+    }
 
     public List<Transactions> getAllTransactions() {
         return transactionRepository.findAll();
